@@ -8,9 +8,21 @@ app.post('/api/test',(req,res)=>{
     console.log(req)
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
-        "speech" : "Error. Can you try it again ? ",
-        "displayText" : "Error. Can you try it again ? "
-    }));
+        "payload": {
+          "google": {
+            "expectUserResponse": true,
+            "richResponse": {
+              "items": [
+                {
+                  "simpleResponse": {
+                    "textToSpeech": "this is a simple response"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }));
 })
 
 app.listen(app.get('port'), function() {
