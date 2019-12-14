@@ -6,7 +6,11 @@ app.use(bodyParser.json())
 app.set('port', (process.env.PORT || 5000))
 app.post('/api/test',(req,res)=>{
     console.log(req)
-    return res.send("ok men");
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+        "speech" : "Error. Can you try it again ? ",
+        "displayText" : "Error. Can you try it again ? "
+    }));
 })
 
 app.listen(app.get('port'), function() {
